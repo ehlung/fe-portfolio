@@ -19,6 +19,19 @@ const createTagList = (items) => {
   return list;
 };
 
+const createBulletSection = (title, items) => {
+  if (!items || items.length === 0) return null;
+
+  const section = createElement("section", "project-detail");
+  section.append(createElement("h4", "", title));
+
+  const list = createElement("ul");
+  items.forEach((item) => list.append(createElement("li", "", item)));
+  section.append(list);
+
+  return section;
+};
+
 const fillStaticContent = () => {
   document.title = `${content.name} | Frontend Developer`;
   document
@@ -55,13 +68,36 @@ const renderProjects = () => {
     article.style.setProperty("--project-color", project.color || "#0d6b5f");
 
     const shot = createElement("div", "project-shot");
-    shot.append(createElement("span", "", project.title));
+    if (project.images && project.images.length > 0) {
+      shot.classList.add("has-images");
+      project.images.forEach((src, index) => {
+        const image = createElement("img", index === 0 ? "project-image main-image" : "project-image");
+        image.src = src;
+        image.alt = `${project.title} 화면 ${index + 1}`;
+        shot.append(image);
+      });
+    } else {
+      shot.append(createElement("span", "", project.title));
+    }
 
     const body = createElement("div", "project-content");
     body.append(createElement("h3", "", project.title));
-    body.append(createElement("p", "project-meta", `${project.period} · ${project.role}`));
+    if (project.subtitle) body.append(createElement("p", "project-subtitle", project.subtitle));
+    body.append(createElement("p", "project-meta", `${project.period} · ${project.type || project.role}`));
     body.append(createElement("p", "project-description", project.description));
     body.append(createTagList(project.tech));
+
+    const details = createElement("div", "project-details");
+    [
+      ["주요 기능", project.features],
+      ["담당 역할", project.contributions],
+      ["트러블슈팅", project.troubleshooting],
+      ["성과", project.achievements],
+    ].forEach(([title, items]) => {
+      const section = createBulletSection(title, items);
+      if (section) details.append(section);
+    });
+    body.append(details);
 
     const links = createElement("div", "project-links");
     if (project.demoUrl) {

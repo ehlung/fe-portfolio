@@ -320,13 +320,13 @@ h3 {
 
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
+  grid-template-columns: 1fr;
+  gap: 22px;
 }
 
 .project-card {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: minmax(270px, 0.72fr) minmax(0, 1.28fr);
   min-height: 430px;
   overflow: hidden;
 }
@@ -334,7 +334,7 @@ h3 {
 .project-shot {
   display: grid;
   place-items: end start;
-  min-height: 170px;
+  min-height: 100%;
   padding: 22px;
   color: white;
   background:
@@ -349,11 +349,39 @@ h3 {
   line-height: 1.05;
 }
 
+.project-shot.has-images {
+  grid-template-columns: 1fr 1fr;
+  align-content: center;
+  gap: 10px;
+  padding: 18px;
+  background: #edf3f0;
+}
+
+.project-image {
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 8px;
+  box-shadow: 0 12px 30px rgba(20, 35, 31, 0.16);
+}
+
+.project-image.main-image {
+  grid-row: span 2;
+}
+
 .project-content {
   display: flex;
   flex: 1;
   flex-direction: column;
   padding: 24px;
+}
+
+.project-subtitle {
+  margin: 8px 0 0;
+  color: var(--accent-strong);
+  font-size: 15px;
+  font-weight: 800;
 }
 
 .project-meta {
@@ -367,6 +395,28 @@ h3 {
   margin: 0;
   color: var(--muted);
   line-height: 1.75;
+}
+
+.project-details {
+  display: grid;
+  gap: 18px;
+  margin-top: 22px;
+}
+
+.project-detail h4 {
+  margin: 0 0 10px;
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.project-detail ul {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.65;
 }
 
 .tag-list {
@@ -510,6 +560,14 @@ h3 {
   .project-grid,
   .profile-list {
     grid-template-columns: 1fr;
+  }
+
+  .project-card {
+    grid-template-columns: 1fr;
+  }
+
+  .project-shot {
+    min-height: 320px;
   }
 }
 
