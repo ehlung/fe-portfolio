@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="신입 프론트엔드 개발자 포트폴리오"
+    />
+    <title>Frontend Developer Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header" aria-label="주요 메뉴">
+        <a class="brand" href="#top" data-content="name">Frontend Developer</a>
+        <nav class="nav-links" aria-label="페이지 섹션">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#experience">Experience</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </header>
+
+      <main id="top">
+        <section class="hero-section">
+          <div class="hero-copy">
+            <p class="eyebrow" data-content="role">Frontend Developer</p>
+            <h1 data-content="headline">사용자 경험을 꼼꼼하게 구현하는 신입 프론트엔드 개발자</h1>
+            <p class="hero-description" data-content="summary">
+              기획 의도를 이해하고, 유지보수하기 쉬운 UI를 구현하는 데 집중합니다.
+            </p>
+            <div class="hero-actions">
+              <a class="button primary" href="#projects">프로젝트 보기</a>
+              <a class="button secondary" data-link="resume" href="#" target="_blank" rel="noreferrer">이력서</a>
+            </div>
+          </div>
+          <div class="hero-visual" aria-label="포트폴리오 대표 화면">
+            <div class="browser-window">
+              <div class="browser-top">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <div class="mock-layout">
+                <div class="mock-sidebar"></div>
+                <div class="mock-main">
+                  <div class="mock-line wide"></div>
+                  <div class="mock-line"></div>
+                  <div class="mock-grid">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>
+                  <div class="mock-panel"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="about" class="section two-column">
+          <div>
+            <p class="section-label">About</p>
+            <h2>저를 소개합니다</h2>
+          </div>
+          <div class="section-body">
+            <p data-content="about">
+              사용자 흐름을 기준으로 문제를 정의하고, 화면의 상태와 예외 케이스를 놓치지 않는 개발자가 되고 싶습니다.
+            </p>
+            <dl class="profile-list" id="profile-list"></dl>
+          </div>
+        </section>
+
+        <section id="projects" class="section">
+          <div class="section-heading">
+            <div>
+              <p class="section-label">Projects</p>
+              <h2>대표 프로젝트</h2>
+            </div>
+            <p>문제 정의, 구현 범위, 배운 점이 잘 드러나도록 구성했습니다.</p>
+          </div>
+          <div class="project-grid" id="project-grid"></div>
+        </section>
+
+        <section id="skills" class="section two-column">
+          <div>
+            <p class="section-label">Skills</p>
+            <h2>기술 스택</h2>
+          </div>
+          <div class="skill-groups" id="skill-groups"></div>
+        </section>
+
+        <section id="experience" class="section two-column">
+          <div>
+            <p class="section-label">Experience</p>
+            <h2>경험과 활동</h2>
+          </div>
+          <div class="timeline" id="timeline"></div>
+        </section>
+
+        <section id="contact" class="section contact-section">
+          <div>
+            <p class="section-label">Contact</p>
+            <h2>함께 일할 준비가 되어 있습니다</h2>
+            <p data-content="contactMessage">
+              포트폴리오를 검토해 주셔서 감사합니다. 메일 또는 GitHub로 연락해 주세요.
+            </p>
+          </div>
+          <div class="contact-links" id="contact-links"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./content.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
