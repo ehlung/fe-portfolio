@@ -191,6 +191,5 @@ export const content: PortfolioContent = {
   contacts: [
     { label: 'Email', value: 'dpfud8786@gmail.com', url: 'mailto:dpfud8786@gmail.com' },
     { label: 'GitHub', value: 'github.com/ehlung', url: 'https://github.com/ehlung' },
-    { label: 'Velog', value: 'velog.io/@ehlung', url: 'https://velog.io/@ehlung/posts' },
   ],
 }

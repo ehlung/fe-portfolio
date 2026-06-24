@@ -1,9 +1,8 @@
-import { FiGithub, FiMail, FiBook } from 'react-icons/fi'
+import { FiGithub, FiMail } from 'react-icons/fi'
 import { content } from '../data/content'
 
 const LINKS = [
   { icon: FiGithub, url: content.contacts.find((c) => c.label === 'GitHub')?.url ?? '#', label: 'GitHub' },
-  { icon: FiBook,   url: content.contacts.find((c) => c.label === 'Velog')?.url  ?? '#', label: 'Velog' },
   { icon: FiMail,   url: content.contacts.find((c) => c.label === 'Email')?.url  ?? '#', label: 'Email' },
 ]
 
