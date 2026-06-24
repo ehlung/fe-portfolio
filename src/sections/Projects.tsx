@@ -28,15 +28,14 @@ export default function Projects() {
                     href={project.githubUrl || project.demoUrl || '#'}
                     target="_blank"
                     rel="noreferrer"
-                  className="group relative block size-full"
+                  className={`group relative flex size-full items-center ${isEven ? 'justify-start' : 'justify-end'}`}
                     tabIndex={-1}
                   >
                     {project.images && project.images.length > 0 ? (
                       <img
                         src={`${BASE}${project.images[0]}`}
                         alt={project.title}
-                      className="h-full min-h-105 w-full object-cover object-top md:min-h-0"
-                        style={{ maxHeight: '340px' }}
+                      className="block h-auto max-h-105 w-auto max-w-full object-contain object-center md:max-h-97.5"
                       />
                     ) : (
                       <div
