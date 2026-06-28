@@ -5,23 +5,23 @@ const BASE = import.meta.env.BASE_URL
 const SKILL_GROUPS = [
   {
     title: 'Frontend',
-    items: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React', 'Next.js', 'Vite', 'Tailwind CSS'],
+    items: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React', 'Next.js', 'Tailwind CSS'],
   },
   {
-    title: 'State & API',
-    items: ['TanStack Query', 'Zustand', 'Axios', 'React Hook Form', 'Zod'],
+    title: 'State & Form',
+    items: ['TanStack Query', 'Zustand', 'React Hook Form', 'Zod'],
   },
   {
-    title: 'Backend & DB',
-    items: ['Node.js', 'Express', 'PostgreSQL', 'Prisma', 'REST API'],
+    title: 'Backend & Database',
+    items: ['Node.js', 'Express', 'PostgreSQL', 'Prisma'],
   },
   {
-    title: 'DevTools',
-    items: ['Git', 'GitHub', 'Vercel', 'pnpm', 'Swagger'],
+    title: 'Tools & Deployment',
+    items: ['Vite', 'Git', 'GitHub', 'Vercel', 'Railway'],
   },
   {
-    title: 'Collaboration',
-    items: ['Figma', 'GitHub PR', 'Code Review', 'README Documentation'],
+    title: 'Design',
+    items: ['Figma', 'Photoshop', 'Illustrator'],
   },
 ]
 
