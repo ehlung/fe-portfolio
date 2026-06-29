@@ -9,7 +9,7 @@ const LINKS = [
 export default function SocialLinks() {
   return (
     <div
-      className="fixed bottom-0 left-10 z-40 hidden flex-col items-center min-[1081px]:flex"
+      className="fixed bottom-0 left-10 z-40 hidden w-10 flex-col items-center min-[1081px]:flex"
       style={{ animation: 'sideFadeUp 0.3s ease 1s both' }}
     >
       {LINKS.map(({ icon: Icon, url, label }) => (
