@@ -1,37 +1,41 @@
-import { useEffect, useState } from 'react'
-import { FiMenu, FiX } from 'react-icons/fi'
+import { useEffect, useState } from "react";
+import { FiMenu, FiX } from "react-icons/fi";
+import { content } from "../data/content";
+
+const BASE = import.meta.env.BASE_URL;
 
 const NAV_ITEMS = [
-  { num: '01.', label: 'About', id: 'about' },
-  { num: '02.', label: 'Experience', id: 'experience' },
-  { num: '03.', label: 'Projects', id: 'projects' },
-  { num: '04.', label: 'Contact', id: 'contact' },
-]
+  { num: "01.", label: "About", id: "about" },
+  { num: "02.", label: "Experience", id: "experience" },
+  { num: "03.", label: "Projects", id: "projects" },
+  { num: "04.", label: "Contact", id: "contact" },
+];
 
 export default function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false);
+  const resumeHref = content.resumeUrl ? `${BASE}${content.resumeUrl}` : "";
 
   useEffect(() => {
-    document.body.classList.toggle('overflow-hidden', menuOpen)
-    return () => document.body.classList.remove('overflow-hidden')
-  }, [menuOpen])
+    document.body.classList.toggle("overflow-hidden", menuOpen);
+    return () => document.body.classList.remove("overflow-hidden");
+  }, [menuOpen]);
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
-    e.preventDefault()
-    setMenuOpen(false)
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
-  }
+    e.preventDefault();
+    setMenuOpen(false);
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
 
   const goHome = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault()
-    setMenuOpen(false)
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
+    e.preventDefault();
+    setMenuOpen(false);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <header
       className="fixed top-0 z-50 flex h-25 w-full translate-y-0 items-center bg-navy/85 px-6.25 backdrop-blur-[10px] md:px-10 lg:px-12.5"
-      style={{ animation: 'navFadeDown 0.3s ease forwards' }}
+      style={{ animation: "navFadeDown 0.3s ease forwards" }}
     >
       <nav className="relative z-50 flex w-full items-center justify-between font-mono text-slate-main">
         <a
@@ -40,7 +44,11 @@ export default function Navbar() {
           className="group relative z-10 flex size-10.5 items-center justify-center text-teal focus:outline-none focus-visible:outline-none"
           aria-label="홈으로"
         >
-          <svg className="absolute inset-0 overflow-visible" viewBox="0 0 100 116" aria-hidden>
+          <svg
+            className="absolute inset-0 overflow-visible"
+            viewBox="0 0 100 116"
+            aria-hidden
+          >
             <path
               className="translate-x-0 translate-y-0 opacity-0 transition-[opacity,transform] duration-200 ease-out group-hover:translate-x-2.5 group-hover:translate-y-2.5 group-hover:opacity-100 group-focus-visible:translate-x-2.5 group-focus-visible:translate-y-2.5 group-focus-visible:opacity-100"
               d="M50 4 L95 27.5 L95 88.5 L50 112 L5 88.5 L5 27.5 Z"
@@ -75,17 +83,31 @@ export default function Navbar() {
                   className="group p-2.5 transition-colors duration-200"
                 >
                   <span className="mr-1.25 text-[12px] text-teal">{num}</span>
-                  <span className="ml-1 text-slate-main group-hover:text-teal">{label}</span>
+                  <span className="ml-1 text-slate-main group-hover:text-teal">
+                    {label}
+                  </span>
                 </a>
               </li>
             ))}
           </ol>
 
+          {resumeHref && (
+            <a
+              href={resumeHref}
+              target="_blank"
+              rel="noreferrer"
+              className="relative ml-3.75 rounded bg-teal text-[13px] text-teal focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal"
+            >
+              <span className="relative z-10 block rounded border border-teal bg-navy px-4 py-2.75 transition-transform duration-200 ease-out hover:-translate-x-1 hover:-translate-y-1 focus-visible:-translate-x-1 focus-visible:-translate-y-1">
+                Resume
+              </span>
+            </a>
+          )}
         </div>
 
         <button
           type="button"
-          aria-label={menuOpen ? '메뉴 닫기' : '메뉴 열기'}
+          aria-label={menuOpen ? "메뉴 닫기" : "메뉴 열기"}
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen((open) => !open)}
           className="relative z-50 flex size-11 items-center justify-center text-teal md:hidden"
@@ -95,12 +117,12 @@ export default function Navbar() {
       </nav>
 
       <div
-        className={`fixed inset-0 z-40 bg-dark-navy/70 transition-opacity duration-200 md:hidden ${menuOpen ? 'opacity-100' : 'pointer-events-none opacity-0'}`}
+        className={`fixed inset-0 z-40 bg-dark-navy/70 transition-opacity duration-200 md:hidden ${menuOpen ? "opacity-100" : "pointer-events-none opacity-0"}`}
         onClick={() => setMenuOpen(false)}
       />
 
       <aside
-        className={`fixed right-0 top-0 z-40 flex h-dvh w-[min(75vw,400px)] flex-col items-center justify-center bg-navy-light px-2.5 font-mono shadow-[-10px_0_30px_-15px_rgba(2,12,27,0.7)] transition-transform duration-200 md:hidden ${menuOpen ? 'translate-x-0' : 'translate-x-full'}`}
+        className={`fixed right-0 top-0 z-40 flex h-dvh w-[min(75vw,400px)] flex-col items-center justify-center bg-navy-light px-2.5 font-mono shadow-[-10px_0_30px_-15px_rgba(2,12,27,0.7)] transition-transform duration-200 md:hidden ${menuOpen ? "translate-x-0" : "translate-x-full"}`}
         aria-hidden={!menuOpen}
       >
         <ol className="w-full text-center">
@@ -111,13 +133,29 @@ export default function Navbar() {
                 onClick={(e) => handleClick(e, id)}
                 className="block px-5 py-0.75 text-slate-main transition-colors duration-200 hover:text-teal"
               >
-                <span className="mb-1.25 block text-[14px] text-teal">{num}</span>
+                <span className="mb-1.25 block text-[14px] text-teal">
+                  {num}
+                </span>
                 {label}
               </a>
             </li>
           ))}
         </ol>
+
+        {resumeHref && (
+          <a
+            href={resumeHref}
+            target="_blank"
+            rel="noreferrer"
+            onClick={() => setMenuOpen(false)}
+            className="relative mt-5 rounded bg-teal text-[14px] text-teal focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal"
+          >
+            <span className="relative z-10 block rounded border border-teal bg-navy-light px-12.5 py-4.5 transition-transform duration-200 ease-out hover:-translate-x-1 hover:-translate-y-1 focus-visible:-translate-x-1 focus-visible:-translate-y-1">
+              Resume
+            </span>
+          </a>
+        )}
       </aside>
     </header>
-  )
+  );
 }

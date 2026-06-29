@@ -11,6 +11,7 @@ export interface Project {
   contributions: string[]
   troubleshooting: string[]
   achievements: string[]
+  notionUrl?: string
   githubUrl: string
   demoUrl: string
   color: string

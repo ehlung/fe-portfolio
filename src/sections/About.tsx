@@ -40,12 +40,12 @@ export default function About() {
 
           <div className="mt-8 space-y-5">
             {SKILL_GROUPS.map((group) => (
-              <div key={group.title}>
-                <h3 className="mb-1 flex items-center gap-2 font-mono text-[13px] font-normal text-teal">
-                  <span className="text-sm leading-3">▹</span>
+              <div key={group.title} className="grid grid-cols-[14px_minmax(0,1fr)] gap-x-2">
+                <span className="font-mono text-sm leading-[1.6] text-teal">▹</span>
+                <h3 className="font-mono text-[13px] font-normal leading-[1.6] text-teal">
                   {group.title}
                 </h3>
-                <p className="pl-5 font-mono text-[13px] leading-[1.6] text-slate-muted">
+                <p className="col-start-2 font-mono text-[13px] leading-[1.6] text-slate-muted">
                   {group.items.join(' · ')}
                 </p>
               </div>

@@ -15,21 +15,28 @@ export default function Projects() {
       <ul className="m-0 list-none p-0">
         {content.projects.map((project, i) => {
           const isEven = i % 2 === 0;
+          const detailUrl =
+            project.notionUrl || project.githubUrl || project.demoUrl || "#";
+
           return (
             <li
               key={project.title}
-              className="relative grid grid-cols-12 items-center gap-2.5 shadow-[0_10px_30px_-15px_rgba(2,12,27,0.7)] [&:not(:last-child)]:mb-7.5 min-[480px]:[&:not(:last-child)]:mb-17.5 md:shadow-none md:[&:not(:last-child)]:mb-25"
+              className="group relative grid cursor-pointer grid-cols-12 items-center gap-2.5 shadow-[0_10px_30px_-15px_rgba(2,12,27,0.7)] not-last:mb-7.5 min-[480px]:not-last:mb-17.5 md:shadow-none md:not-last:mb-25"
             >
+              <a
+                href={detailUrl}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={`${project.title} 프로젝트 상세 보기`}
+                className="absolute inset-0 z-4 rounded focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal"
+              />
+
               <div
-                className={`project-image relative z-[1] col-span-full row-start-1 h-full opacity-25 md:col-span-6 md:opacity-100
+                className={`project-image relative z-1 col-span-full row-start-1 h-full opacity-25 transition-transform duration-200 ease-out md:col-span-6 md:opacity-100 md:group-hover:-translate-y-1 md:group-hover:scale-[1.03]
                     ${isEven ? "md:col-start-1 md:col-end-7" : "md:col-start-7 md:col-end-13"}`}
               >
-                <a
-                  href={project.githubUrl || project.demoUrl || "#"}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={`group relative flex size-full items-center ${isEven ? "justify-start" : "justify-end"}`}
-                  tabIndex={-1}
+                <div
+                  className={`relative flex size-full items-center ${isEven ? "justify-start" : "justify-end"}`}
                 >
                   {project.images && project.images.length > 0 ? (
                     <img
@@ -50,11 +57,11 @@ export default function Projects() {
                       </span>
                     </div>
                   )}
-                </a>
+                </div>
               </div>
 
               <div
-                className={`relative z-[5] col-span-full row-start-1 flex h-full flex-col justify-center px-6.25 pb-5 pt-7.5 md:z-10 md:block md:p-0
+                className={`pointer-events-none relative z-5 col-span-full row-start-1 flex h-full flex-col justify-center px-6.25 pb-5 pt-7.5 md:z-10 md:block md:p-0
                     ${
                       isEven
                         ? "md:col-start-7 md:col-end-13 md:text-right"
@@ -65,31 +72,37 @@ export default function Projects() {
                   Featured Project
                 </p>
                 <h3 className="mb-0 text-[clamp(24px,5vw,28px)] font-semibold leading-[1.1] text-slate-bright md:mb-5 md:text-slate-main">
-                  <a
-                    href={project.githubUrl || project.demoUrl || "#"}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hover:text-teal transition-colors duration-200"
-                  >
+                  <span className="transition-colors duration-200 group-hover:text-teal">
                     {project.title}
-                  </a>
+                  </span>
                 </h3>
                 <p className="mb-3 text-[16px] text-slate-mid">
                   {project.subtitle}
                 </p>
 
                 <div
-                  className={`relative z-[2] rounded bg-transparent py-5 text-slate-mid shadow-none md:bg-navy-light md:p-6.25 md:shadow-[0_10px_30px_-15px_rgba(2,12,27,0.7)]
+                  className={`relative z-2 rounded bg-transparent py-5 text-slate-mid shadow-none transition-[box-shadow,transform] duration-200 ease-out md:bg-navy-light md:p-6.25 md:shadow-[0_10px_30px_-15px_rgba(2,12,27,0.7)] md:group-hover:-translate-y-1 md:group-hover:shadow-[0_22px_42px_-20px_rgba(2,12,27,1)]
                     ${isEven ? "md:-ml-15" : "md:-mr-15"}`}
                 >
-                  <p className="text-left text-pretty text-[17px] leading-[1.5] text-slate-main md:text-[18px] md:text-slate-mid">
+                  <span
+                    className={`pointer-events-none mb-2 hidden font-mono text-[12px] text-teal opacity-0 transition-opacity duration-200 ease-out md:block md:group-hover:opacity-100 ${
+                      isEven ? "text-right" : "text-left"
+                    }`}
+                  >
+                    View details
+                  </span>
+                  <p
+                    className={`text-left text-pretty text-[17px] leading-normal text-slate-main md:text-[18px] md:text-slate-mid ${
+                      isEven ? "md:text-right" : "md:text-left"
+                    }`}
+                  >
                     {project.description}
                   </p>
                 </div>
 
                 {project.achievements.length > 0 && (
                   <ul
-                    className={`relative z-[2] mt-4 flex flex-wrap p-0 font-mono text-[12px] text-teal/90
+                    className={`relative z-2 mt-4 flex flex-wrap p-0 font-mono text-[12px] text-teal/90
                         ${isEven ? "md:justify-end" : "md:justify-start"}`}
                   >
                     {project.achievements.map((a) => (
@@ -104,7 +117,7 @@ export default function Projects() {
                 )}
 
                 <ul
-                  className={`relative z-[2] mt-3 flex flex-wrap p-0 font-mono text-[13px] text-slate-main md:text-slate-mid
+                  className={`relative z-2 mt-3 flex flex-wrap p-0 font-mono text-[13px] text-slate-main md:text-slate-mid
                       ${isEven ? "md:justify-end" : "md:justify-start"}`}
                 >
                   {project.tech.map((t) => (
@@ -118,7 +131,7 @@ export default function Projects() {
                 </ul>
 
                 <div
-                  className={`relative z-[2] mt-4 flex items-center text-slate-main
+                  className={`pointer-events-auto relative z-6 mt-4 flex items-center text-slate-main
                       ${isEven ? "-ml-2.5 md:ml-0 md:justify-end" : "-ml-2.5 md:justify-start"}`}
                 >
                   {project.githubUrl && (
