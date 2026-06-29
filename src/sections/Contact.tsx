@@ -19,9 +19,11 @@ export default function Contact() {
 
       <a
         href={emailContact?.url ?? 'mailto:dpfud8786@gmail.com'}
-        className="inline-block rounded border border-teal px-7 py-5 font-mono text-sm leading-none text-teal transition-colors duration-200 hover:bg-teal/10"
+        className="relative inline-block rounded bg-teal font-mono text-sm leading-none text-teal focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal"
       >
-        Send a Message
+        <span className="relative z-10 block rounded border border-teal bg-navy px-7 py-5 transition-transform duration-200 ease-out hover:-translate-x-1 hover:-translate-y-1 focus-visible:-translate-x-1 focus-visible:-translate-y-1">
+          Send a Message
+        </span>
       </a>
 
       <footer className="mt-20 font-mono">
